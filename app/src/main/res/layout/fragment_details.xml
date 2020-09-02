@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="detailsViewModel"
+            type="com.example.movies.ui.DetailsViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/frameLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="20dp"
+                tools:context=".ui.DetailsFragment">
+
+
+                <ImageView
+                    android:id="@+id/imgPoster"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:contentDescription="@string/image_poster"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintDimensionRatio="w,400:576"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="163dp" />
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="40dp"
+                    android:text="@{detailsViewModel.detailsModel.title}"
+                    android:textColor="@color/color_black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="The Avengers" />
+
+                <TextView
+                    android:id="@+id/tvGenre"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@{detailsViewModel.detailsModel.genre}"
+                    android:textColor="@color/color_light_grey"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                    tools:text="Action  | Adventure  | Sci -Fi" />
+
+                <TextView
+                    android:id="@+id/tvReleaseDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@{detailsViewModel.detailsModel.released}"
+                    android:textColor="@color/color_light_grey"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/tvGenre"
+                    tools:text="27 May 2016 (USA)" />
+
+                <TextView
+                    android:id="@+id/tvDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@{detailsViewModel.detailsModel.duration}"
+                    android:textColor="@color/color_grey"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/imgPoster"
+                    app:layout_constraintTop_toBottomOf="@+id/tvRatingTotal"
+                    tools:text="2h 20min" />
+
+                <TextView
+                    android:id="@+id/tvRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@{detailsViewModel.detailsModel.imdbRating}"
+                    android:textColor="@color/color_grey"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate"
+                    tools:text="8.8" />
+
+                <TextView
+                    android:id="@+id/tvRatingTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/out_of"
+                    android:textColor="@color/color_light_grey"
+                    app:layout_constraintStart_toEndOf="@+id/tvRating"
+                    app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate" />
+
+                <TextView
+                    android:id="@+id/tvIMDB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_cornered_yellow"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="3dp"
+                    android:text="@string/imdb"
+                    android:textColor="@color/color_dark_grey"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/tvRatingTotal"
+                    app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate" />
+
+                <TextView
+                    android:id="@+id/tvPG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_cornered_blue"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="3dp"
+                    android:text="@{detailsViewModel.detailsModel.rated}"
+                    android:textColor="@color/color_white"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/tvIMDB"
+                    app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate"
+                    tools:text="PG-13" />
+
+                <TextView
+                    android:id="@+id/tvDirectorLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/director"
+                    android:textColor="@color/color_grey"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/barrier4" />
+
+                <TextView
+                    android:id="@+id/tvDirector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@{detailsViewModel.detailsModel.director}"
+                    android:textColor="@color/color_light_grey"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/tvDirectorLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/barrier4"
+                    tools:text="Joss Whedon" />
+
+                <TextView
+                    android:id="@+id/tvWriterLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/writer"
+                    android:textColor="@color/color_dark_grey"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDirectorLabel" />
+
+                <TextView
+                    android:id="@+id/tvWriter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@{detailsViewModel.detailsModel.writer}"
+                    android:textColor="@color/color_light_grey"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvWriterLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDirector"
+                    tools:text="Joss Whedon (screenplay), Zak Penn (story), Joss Whedon (story)" />
+
+                <TextView
+                    android:id="@+id/tvPlot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{detailsViewModel.detailsModel.plot}"
+                    android:textColor="@color/color_light_grey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvWriter"
+                    tools:text="Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity." />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{ detailsViewModel.emptyView ? View.GONE : View.VISIBLE }"
+                    app:constraint_referenced_ids="tvWriter,tvDirectorLabel,tvDuration,tvRatingTotal,
+            tvDirector,imgPoster,tvPlot,guideline,tvTitle,tvWriterLabel,tvGenre,tvReleaseDate,tvRating,tvPG,tvIMDB" />
+
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/barrier4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="guideline,imgPoster,tvGenre,tvRating,tvPG,tvReleaseDate,tvDuration,tvIMDB,tvRatingTotal,tvTitle"
+                    tools:layout_editor_absoluteY="731dp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="@{ detailsViewModel.taskProgressing ? View.VISIBLE : View.GONE }" />
+
+        <TextView
+            android:id="@+id/errorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/error_text"
+            android:visibility="@{ detailsViewModel.errorView ? View.VISIBLE : View.GONE  }" />
+    </RelativeLayout>
+</layout>

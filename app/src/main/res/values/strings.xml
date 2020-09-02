@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Movies</string>
+    <string name="image_poster">Image Poster</string>
+    <string name="out_of"> /10</string>
+    <string name="imdb">IMDB</string>
+    <string name="search">Search</string>
+    <string name="writer">Writer :</string>
+    <string name="director">Director :</string>
+    <string name="error_text">Something went wrong, Please try again.</string>
+</resources>
